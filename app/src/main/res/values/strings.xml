@@ -3,4 +3,11 @@
     <string name="add_note">Add Note</string>
     <string name="delete_note">Delete Note</string>
     <string name="warning_empty_text">Text cannot be empty!</string>
+    <string name="note_name_hint">Enter note name</string>
+    <string name="note_content_hint">Enter note content</string>
+    <string name="save_note">Save Note</string>
+    <string name="warning_no_note_selected">No note selected for deletion</string>
+    <string name="note_saved">Note saved</string>
+
 </resources>
+

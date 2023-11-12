@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.activitiesinteractionsandstorage"
+    namespace = "com.example.lab555"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.activitiesinteractionsandstorage"
+        applicationId = "com.example.lab555"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -39,4 +39,5 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 }

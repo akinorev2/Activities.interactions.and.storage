@@ -1,28 +1,35 @@
 package com.example.activitiesinteractionsandstorage;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.lab555.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Note> notes;
-    private ArrayAdapter<Note> adapter;
+    private static List<Note> notes;
+    private static ArrayAdapter<Note> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize notes and adapter
         notes = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notes);
 
-        // Set the adapter to the ListView
         ListView listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        // Set up the options menu
         registerForContextMenu(listView);
     }
 
@@ -34,18 +41,37 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_add_note:
-                startActivity(new Intent(this, AddNoteActivity.class));
-                return true;
-            case R.id.menu_delete_note:
-                startActivity(new Intent(this, DeleteNoteActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.menu_add_note) {
+            startActivity(new Intent(this, AddNoteActivity.class));
+            return true;
+        } else if (itemId == R.id.menu_delete_note) {
+            startActivity(new Intent(this, DeleteNoteActivity.class));
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    // Method to get the list of notes
+    public static List<Note> getNotes() {
+        return notes;
+    }
+
+    // Method to delete a note at the specified position
+    public static void deleteNoteAt(int position) {
+        if (position >= 0 && position < notes.size()) {
+            notes.remove(position);
+            adapter.notifyDataSetChanged();
         }
     }
 
-    // Implement other necessary methods
+    // Method to add a note to the list
+    public static void addNote(Note note) {
+        notes.add(note);
+        adapter.notifyDataSetChanged();
+    }
 }
-}
+
