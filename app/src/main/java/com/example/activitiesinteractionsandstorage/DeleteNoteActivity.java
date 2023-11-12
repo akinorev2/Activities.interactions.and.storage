@@ -16,6 +16,7 @@ import java.util.List;
 
 
 
+
 public class DeleteNoteActivity extends AppCompatActivity {
 
     private ListView listView;
@@ -25,11 +26,8 @@ public class DeleteNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete_note_activity);
 
-        // Initialize views
-        listView = findViewById(R.id.listView);
 
-        // Set up the list of notes for deletion
-        // For simplicity, you can use the same list from MainActivity
+        listView = findViewById(R.id.listView);
         listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, MainActivity.getNotes()));
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
@@ -38,11 +36,8 @@ public class DeleteNoteActivity extends AppCompatActivity {
         int selectedPosition = listView.getCheckedItemPosition();
 
         if (selectedPosition != ListView.INVALID_POSITION) {
-            // Delete the selected note from your data storage
-            // For simplicity, you can remove it from the list in MainActivity
             MainActivity.deleteNoteAt(selectedPosition);
 
-            // Optionally, you can finish() this activity to go back to MainActivity
             finish();
         } else {
             showToast(getString(R.string.warning_no_note_selected));

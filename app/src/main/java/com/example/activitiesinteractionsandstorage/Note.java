@@ -9,10 +9,8 @@ public class Note {
         this.content = content;
     }
 
-    // Getter and setter methods as needed
-
     @Override
     public String toString() {
-        return name; // Display the note name in the ListView
+        return name;
     }
 }

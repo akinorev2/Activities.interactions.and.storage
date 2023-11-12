@@ -25,7 +25,6 @@ public class AddNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_note_activity);
 
-        // Initialize views
         edtNoteName = findViewById(R.id.edtNoteName);
         edtNoteContent = findViewById(R.id.edtNoteContent);
     }
@@ -37,13 +36,10 @@ public class AddNoteActivity extends AppCompatActivity {
         if (name.isEmpty()) {
             showToast(getString(R.string.warning_empty_text));
         } else {
-            // Use the context of AddNoteActivity to call getString
             showToast(getString(R.string.note_saved));
 
-            // Call the addNote method in MainActivity to add the note
             MainActivity.addNote(new Note(name, content));
 
-            // Finish the AddNoteActivity
             finish();
         }
     }

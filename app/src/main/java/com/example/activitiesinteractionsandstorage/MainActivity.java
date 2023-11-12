@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.lab555.R;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,12 +55,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Method to get the list of notes
+        @Override
+        protected void onResume() {
+            super.onResume();
+
+            if (adapter != null) {
+                adapter.notifyDataSetChanged();
+            }
+        }
+
     public static List<Note> getNotes() {
         return notes;
     }
 
-    // Method to delete a note at the specified position
     public static void deleteNoteAt(int position) {
         if (position >= 0 && position < notes.size()) {
             notes.remove(position);
@@ -68,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Method to add a note to the list
     public static void addNote(Note note) {
         notes.add(note);
         adapter.notifyDataSetChanged();
